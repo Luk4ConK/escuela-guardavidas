@@ -1,0 +1,32 @@
+FOTOS DEL SITIO
+===============
+
+Poné acá los archivos con EXACTAMENTE estos nombres. La página los toma sola.
+Si un archivo no está, en su lugar queda el recuadro punteado con la indicación.
+
+  hero.jpg           Fondo de las portadas (todas las páginas).
+                     Horizontal, apaisada, 1920x1080 o más.
+                     Va a tener texto blanco encima: elegí una donde el
+                     centro no sea muy claro ni muy cargado.
+
+  formacion.jpg      Inicio, bloque "Una formación corta con amplia salida
+                     laboral". Clase práctica o grupo de la camada.
+
+  precurso.jpg       Inicio, bloque "Empezá por el pre-curso".
+                     Nado en pileta, tomada desde el borde.
+
+  instalaciones.jpg  Página "La Escuela". Pileta y aula del club.
+
+  entrenamiento.jpg  Página "Pre-curso". Nado en pileta desde el borde,
+                     en horario nocturno.
+
+  oxigenoterapia.jpg Página "Próximamente". Práctica con torso y equipo
+                     de oxígeno.
+
+RECOMENDACIONES
+---------------
+- Formato .jpg. Si tenés .png o .heic, convertilas primero.
+- Ancho de 1600 px alcanza y sobra. Más de 2000 px solo hace lento el sitio.
+- Peso: menos de 400 KB cada una. Podés comprimirlas en squoosh.app.
+- Horizontales, no verticales: los bloques son apaisados.
+- Que se vea gente entrenando. Las placas de diseño de Instagram no sirven acá.

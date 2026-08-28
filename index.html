@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escuela de Guardavidas Sumar Salud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --ground:#FFFFFF;
+  --soft:#F4F8F9;
+  --soft-2:#E9F2F4;
+  --ink:#222222;
+  --ink-2:#5B6670;
+  --ink-3:#8A959E;
+  --line:#E2EAED;
+  --line-strong:#CBD8DD;
+
+  --violet:#2B2A7C;
+  --navy:#16255E;
+  --aqua:#009AA8;
+  --aqua-soft:#E2F4F6;
+  --amber:#F2A03D;
+  --amber-soft:#FDF1E1;
+
+  --on-dark:#FFFFFF;
+  --on-dark-2:rgba(255,255,255,.82);
+  --dark-line:rgba(255,255,255,.22);
+
+  --shadow-sm:0 2px 10px rgba(22,37,94,.06);
+  --shadow:0 10px 34px -14px rgba(22,37,94,.28);
+
+  --f-head:'Quicksand', 'Trebuchet MS', Helvetica, Arial, sans-serif;
+  --f-body:'Nunito', Helvetica, Arial, sans-serif;
+
+  --wrap:1180px;
+  --gutter:clamp(20px, 5vw, 56px);
+  --r-card:16px;
+  --r-pill:999px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1520;
+    --soft:#131F2C;
+    --soft-2:#18293A;
+    --ink:#EDF3F5;
+    --ink-2:#A9B8C3;
+    --ink-3:#83939F;
+    --line:#22384C;
+    --line-strong:#2F4A63;
+    --violet:#5E5CC4;
+    --navy:#0A1330;
+    --aqua:#38C4D2;
+    --aqua-soft:#12313A;
+    --amber:#F5B265;
+    --amber-soft:#33251A;
+    --shadow-sm:0 2px 10px rgba(0,0,0,.4);
+    --shadow:0 12px 36px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1520;
+  --soft:#131F2C;
+  --soft-2:#18293A;
+  --ink:#EDF3F5;
+  --ink-2:#A9B8C3;
+  --ink-3:#83939F;
+  --line:#22384C;
+  --line-strong:#2F4A63;
+  --violet:#5E5CC4;
+  --navy:#0A1330;
+  --aqua:#38C4D2;
+  --aqua-soft:#12313A;
+  --amber:#F5B265;
+  --amber-soft:#33251A;
+  --shadow-sm:0 2px 10px rgba(0,0,0,.4);
+  --shadow:0 12px 36px -16px rgba(0,0,0,.8);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{box-sizing:border-box;}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  overflow-x:clip;
+  font-family:var(--f-body);font-size:17px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+p{margin:0;}
+h1,h2,h3,h4{font-family:var(--f-head);font-weight:600;margin:0;line-height:1.22;text-wrap:balance;}
+h1{font-weight:700;}
+button{font:inherit;color:inherit;}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:var(--gutter);}
+.stack{display:flex;flex-direction:column;}
+.center{text-align:center;align-items:center;}
+.lead{font-size:19px;color:var(--ink-2);max-width:62ch;}
+.body{color:var(--ink-2);max-width:64ch;}
+.body strong{color:var(--ink);font-weight:700;}
+
+.kicker{
+  font-family:var(--f-head);font-weight:700;font-size:13px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--aqua);
+}
+.kicker--light{color:#8FE3EC;}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+/* --- barra utilitaria: WhatsApp + portal de alumnos --- */
+.topbar{background:var(--navy);color:rgba(255,255,255,.86);}
+.topbar__in{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;min-height:40px;
+}
+.topbar a{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:inherit;
+  font-family:var(--f-head);font-weight:600;font-size:13.5px;padding:9px 0;
+  transition:color .15s;
+}
+.topbar a:hover{color:#fff;}
+.topbar svg{width:16px;height:16px;flex:none;color:#8FE3EC;}
+
+/* --- barra principal --- */
+.hdr{
+  position:sticky;top:0;z-index:60;background:var(--ground);
+  border-bottom:1px solid var(--line);
+}
+.hdr__in{display:flex;align-items:center;gap:20px;min-height:76px;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 1 auto;min-width:0;}
+.brand__mark{width:44px;height:44px;flex:none;}
+.brand__txt{display:flex;flex-direction:column;line-height:1.15;min-width:0;}
+.brand__a{font-family:var(--f-head);font-weight:700;font-size:16px;color:var(--ink);}
+.brand__b{font-family:var(--f-head);font-weight:600;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);}
+
+.nav{display:flex;gap:2px;margin-left:auto;}
+.nav a{
+  font-family:var(--f-head);font-size:14.5px;font-weight:600;text-decoration:none;
+  padding:9px 12px;border-radius:var(--r-pill);color:var(--ink-2);white-space:nowrap;
+  transition:color .15s, background .15s;
+}
+.nav a:hover{color:var(--ink);background:var(--soft);}
+.nav a[aria-current="page"]{color:var(--aqua);background:var(--aqua-soft);}
+.nav__sep{display:none;}
+.nav__portal{display:none;}
+
+.hdr__cta{flex:none;}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--f-head);font-weight:700;font-size:15px;
+  padding:12px 26px;border-radius:var(--r-pill);text-decoration:none;
+  border:2px solid transparent;cursor:pointer;
+  transition:transform .14s ease, background .18s, border-color .18s, box-shadow .18s;
+}
+.btn:active{transform:translateY(1px);}
+.btn--primary{background:var(--aqua);color:#fff;box-shadow:0 6px 18px -8px color-mix(in srgb, var(--aqua) 80%, transparent);}
+.btn--primary:hover{background:color-mix(in srgb, var(--aqua) 86%, #000);}
+.btn--amber{background:var(--amber);color:#3A2408;}
+.btn--amber:hover{background:color-mix(in srgb, var(--amber) 88%, #000);}
+.btn--ghost{border-color:var(--line-strong);color:var(--ink);}
+.btn--ghost:hover{border-color:var(--aqua);color:var(--aqua);}
+.btn--onDark{background:#fff;color:var(--navy);}
+.btn--onDark:hover{background:#E8F5F7;}
+.btn--outlineDark{border-color:rgba(255,255,255,.6);color:#fff;}
+.btn--outlineDark:hover{background:rgba(255,255,255,.14);}
+.btn--lg{padding:15px 34px;font-size:16.5px;}
+
+.burger{display:none;background:none;border:2px solid var(--line-strong);border-radius:var(--r-pill);padding:8px 12px;cursor:pointer;margin-left:auto;}
+.burger svg{width:18px;height:18px;display:block;}
+
+@media (max-width:1180px){
+  .nav{
+    display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    padding:10px var(--gutter) 20px;background:var(--ground);border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .nav.is-open{display:flex;}
+  .nav a{padding:13px 16px;font-size:17px;border-radius:12px;}
+  .burger{display:block;}
+  .hdr__cta{order:3;}
+}
+@media (max-width:640px){
+  .hdr__cta{display:none;}
+  .brand__a{font-size:15px;}
+}
+@media (max-width:380px){
+  .topbar a span{display:none;}
+  .topbar__in{justify-content:space-around;}
+}
+
+/* ============================================================
+   VIEWS + SECTIONS
+   ============================================================ */
+.view{display:none;}
+.view.is-active{display:block;animation:fade .3s ease both;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){.view.is-active{animation:none;}}
+
+section{padding-block:clamp(56px, 8vw, 100px);}
+.sec--soft{background:var(--soft);}
+
+.sec-head{display:flex;flex-direction:column;gap:14px;max-width:70ch;}
+.sec-head.center{margin-inline:auto;text-align:center;}
+.sec-head h2{font-size:clamp(28px,4vw,40px);}
+.sec-head h3{font-size:clamp(19px,2.3vw,22px);font-weight:600;color:var(--aqua);}
+
+/* ============================================================
+   HERO — full bleed media with overlay, EPSA-style
+   ============================================================ */
+.hero{
+  position:relative;min-height:clamp(420px,62vh,600px);
+  display:grid;place-items:center;text-align:center;color:var(--on-dark);
+  /* Si existe img/hero.jpg la usa de fondo; si no, quedan solo los degradados. */
+  background-image:
+    linear-gradient(180deg, rgba(11,20,50,.72) 0%, rgba(11,20,50,.58) 45%, rgba(11,20,50,.84) 100%),
+    url("img/hero.jpg"),
+    radial-gradient(120% 80% at 70% 12%, #1FA7B6 0%, transparent 55%),
+    linear-gradient(160deg, #2B2A7C 0%, #16255E 55%, #0B1432 100%);
+  background-size:auto, cover, auto, auto;
+  background-position:center, center, center, center;
+  background-repeat:no-repeat;
+  overflow:hidden;
+}
+.hero__waves{position:absolute;left:0;right:0;bottom:-2px;height:90px;pointer-events:none;}
+.hero__in{position:relative;padding-block:clamp(56px,9vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;}
+.hero h1{font-size:clamp(34px,6vw,60px);color:#fff;max-width:17ch;}
+.hero__sub{font-family:var(--f-head);font-weight:600;font-size:clamp(18px,2.4vw,23px);color:#8FE3EC;max-width:34ch;}
+.hero__lede{color:var(--on-dark-2);max-width:60ch;font-size:17.5px;}
+.hero__actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px;}
+.hero__note{
+  display:inline-flex;align-items:center;gap:9px;margin-top:6px;
+  background:rgba(255,255,255,.14);border:1px solid var(--dark-line);
+  padding:8px 18px;border-radius:var(--r-pill);
+  font-family:var(--f-head);font-weight:600;font-size:14px;color:#fff;
+}
+.hero__note::before{content:"";width:8px;height:8px;border-radius:50%;background:#6BE0A0;flex:none;}
+.hero--slim{min-height:auto;}
+.hero--slim .hero h1{font-size:clamp(30px,5vw,48px);}
+
+/* ============================================================
+   ALTERNATING SPLIT — the EPSA rhythm
+   ============================================================ */
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,5vw,64px);align-items:center;}
+.split__txt{display:flex;flex-direction:column;gap:16px;}
+.split__txt h2{font-size:clamp(26px,3.6vw,36px);}
+.split__txt h3{font-size:19px;font-weight:600;color:var(--aqua);}
+.split__actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px;}
+.split--flip .split__media{order:-1;}
+@media (max-width:760px){.split--flip .split__media{order:0;}}
+
+/* photo holder: muestra la foto si el archivo existe, si no el recuadro guía */
+.ph{position:relative;border-radius:var(--r-card);overflow:hidden;min-height:280px;}
+.ph--short{min-height:210px;}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;border-radius:var(--r-card);opacity:0;}
+.ph.is-ok img{opacity:1;position:static;}
+.ph.is-ok .ph__guide{display:none;}
+.ph__guide{
+  position:absolute;inset:0;
+  border:2px dashed var(--line-strong);border-radius:var(--r-card);
+  background:linear-gradient(135deg, var(--aqua-soft), var(--soft) 70%);
+  display:grid;place-items:center;text-align:center;padding:30px;
+}
+.ph__file{
+  display:inline-block;margin-top:12px;font-family:var(--f-head);font-weight:700;font-size:13px;
+  background:var(--ground);color:var(--ink-2);border:1px solid var(--line-strong);
+  border-radius:var(--r-pill);padding:5px 14px;
+}
+
+/* media slot */
+.slot{
+  border:2px dashed var(--line-strong);border-radius:var(--r-card);
+  background:linear-gradient(135deg, var(--aqua-soft), var(--soft) 70%);
+  display:grid;place-items:center;text-align:center;padding:30px;min-height:280px;
+}
+.slot__t{font-family:var(--f-head);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--aqua);}
+.slot__d{font-size:15px;color:var(--ink-3);margin-top:8px;max-width:34ch;}
+.slot--short{min-height:210px;}
+
+/* ============================================================
+   CARDS / GRIDS
+   ============================================================ */
+.grid{display:grid;gap:24px;}
+.grid--2{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));}
+.grid--3{grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));}
+.grid--4{grid-template-columns:repeat(auto-fit,minmax(min(215px,100%),1fr));}
+
+.card{
+  background:var(--ground);border:1px solid var(--line);border-radius:var(--r-card);
+  padding:28px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-sm);
+}
+.card h3{font-size:20px;}
+.card h4{font-size:17.5px;}
+.card p{color:var(--ink-2);font-size:16px;}
+.card--center{text-align:center;align-items:center;}
+
+.ico{
+  width:62px;height:62px;border-radius:50%;background:var(--aqua-soft);color:var(--aqua);
+  display:grid;place-items:center;flex:none;
+}
+.ico svg{width:29px;height:29px;}
+.ico--amber{background:var(--amber-soft);color:var(--amber);}
+
+/* stat row */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));gap:26px;text-align:center;}
+.stat__n{font-family:var(--f-head);font-weight:700;font-size:clamp(30px,4.2vw,44px);line-height:1.05;color:var(--aqua);font-variant-numeric:tabular-nums;}
+.stat__l{font-family:var(--f-head);font-weight:600;font-size:15px;color:var(--ink-2);margin-top:10px;max-width:26ch;margin-inline:auto;line-height:1.4;}
+.band .stat__n{color:#8FE3EC;}
+.band .stat__l{color:var(--on-dark-2);}
+
+/* checklist */
+.checks{display:flex;flex-direction:column;gap:2px;}
+.checks li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);}
+.checks li:last-child{border-bottom:none;}
+.checks .tick{
+  width:26px;height:26px;border-radius:50%;background:var(--aqua);color:#fff;flex:none;
+  display:grid;place-items:center;margin-top:3px;
+}
+.checks .tick svg{width:14px;height:14px;}
+.checks p{color:var(--ink-2);}
+.checks strong{color:var(--ink);font-family:var(--f-head);font-weight:700;}
+ul.checks{list-style:none;margin:0;padding:0;}
+
+/* data list */
+.dl{border-top:1px solid var(--line);}
+.dl__row{display:grid;grid-template-columns:minmax(140px,.44fr) 1fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.dl__k{font-family:var(--f-head);font-weight:700;font-size:14px;color:var(--ink-3);}
+.dl__v{font-size:16.5px;color:var(--ink-2);}
+.dl__v strong{color:var(--ink);font-weight:700;}
+@media (max-width:520px){.dl__row{grid-template-columns:1fr;gap:2px;}}
+
+/* table */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-card);background:var(--ground);box-shadow:var(--shadow-sm);}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:16px;}
+th,td{text-align:left;padding:14px 20px;border-bottom:1px solid var(--line);}
+th{font-family:var(--f-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);background:var(--soft);}
+td{color:var(--ink-2);}
+td:first-child{color:var(--ink);font-family:var(--f-head);font-weight:600;}
+tbody tr:last-child td{border-bottom:none;}
+td:last-child{white-space:nowrap;}
+
+/* pills / badges */
+.pill{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-family:var(--f-head);font-weight:700;font-size:13px;
+  padding:6px 16px;border-radius:var(--r-pill);
+}
+.pill--open{background:var(--aqua-soft);color:var(--aqua);}
+.pill--soon{background:var(--amber-soft);color:color-mix(in srgb, var(--amber) 78%, #000);}
+:root[data-theme="dark"] .pill--soon,
+:root:not([data-theme="light"]) .pill--soon{color:var(--amber);}
+
+/* price */
+.price{
+  background:var(--ground);border:1px solid var(--line);border-radius:var(--r-card);
+  padding:30px;display:flex;flex-direction:column;gap:18px;box-shadow:var(--shadow);
+}
+.price__big{font-family:var(--f-head);font-weight:700;font-size:clamp(40px,6vw,56px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;}
+.price__big small{font-size:.32em;font-weight:600;color:var(--ink-3);margin-left:6px;}
+
+/* callout */
+.callout{
+  background:var(--aqua-soft);border-radius:var(--r-card);padding:24px 28px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.callout__t{font-family:var(--f-head);font-weight:700;font-size:17.5px;color:var(--ink);}
+.callout p{color:var(--ink-2);}
+.callout--amber{background:var(--amber-soft);}
+
+/* dark band */
+.band{
+  background:linear-gradient(150deg, var(--violet) 0%, var(--navy) 58%, #0B1432 100%);
+  color:var(--on-dark);
+}
+.band h2,.band h3,.band h4{color:#fff;}
+.band p,.band .body,.band .lead{color:var(--on-dark-2);}
+.band .body strong{color:#fff;}
+.band .callout{background:rgba(255,255,255,.1);}
+.band .callout__t{color:#fff;}
+.band .callout p{color:var(--on-dark-2);}
+.band .checks li{border-bottom-color:var(--dark-line);}
+.band .checks p{color:var(--on-dark-2);}
+.band .checks strong{color:#fff;}
+.band .tick{background:#8FE3EC;color:var(--navy);}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line);max-width:80ch;}
+details{border-bottom:1px solid var(--line);}
+summary{
+  cursor:pointer;list-style:none;padding:18px 40px 18px 0;position:relative;
+  font-family:var(--f-head);font-weight:600;font-size:17.5px;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{
+  content:"";position:absolute;right:8px;top:50%;width:10px;height:10px;
+  border-right:2.5px solid var(--aqua);border-bottom:2.5px solid var(--aqua);
+  transform:translateY(-70%) rotate(45deg);transition:transform .2s;
+}
+details[open] summary::after{transform:translateY(-30%) rotate(-135deg);}
+details p{padding:0 0 20px;color:var(--ink-2);max-width:68ch;}
+
+/* steps */
+.steps{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));counter-reset:s;}
+.step{display:flex;flex-direction:column;gap:10px;align-items:flex-start;counter-increment:s;}
+.step::before{
+  content:counter(s);
+  font-family:var(--f-head);font-weight:700;font-size:20px;color:#fff;
+  width:46px;height:46px;border-radius:50%;background:var(--aqua);
+  display:grid;place-items:center;
+}
+.step h3{font-size:18.5px;}
+.step p{color:var(--ink-2);font-size:16px;}
+
+/* form */
+.form{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));}
+.field{display:flex;flex-direction:column;gap:7px;}
+.field--full{grid-column:1/-1;}
+.field label{font-family:var(--f-head);font-weight:700;font-size:14.5px;color:var(--ink-2);}
+.field input,.field select,.field textarea{
+  font-family:var(--f-body);font-size:16px;color:var(--ink);
+  background:var(--ground);border:1.5px solid var(--line-strong);border-radius:12px;
+  padding:12px 15px;width:100%;transition:border-color .15s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--aqua);}
+.field textarea{min-height:100px;resize:vertical;}
+.field small{font-size:14px;color:var(--ink-3);line-height:1.5;}
+.check{display:flex;gap:11px;align-items:flex-start;font-size:16px;color:var(--ink-2);}
+.check input{margin-top:5px;flex:none;width:auto;}
+.formnote{
+  grid-column:1/-1;font-size:15px;color:var(--ink-2);
+  background:var(--soft);border-radius:var(--r-card);padding:18px 22px;
+}
+.formnote a{color:var(--aqua);font-weight:700;}
+.form--onDark .field label{color:var(--on-dark-2);}
+.form--onDark .field input,.form--onDark .field select,.form--onDark .field textarea{
+  background:rgba(255,255,255,.1);border-color:var(--dark-line);color:#fff;
+}
+.form--onDark .field small{color:var(--on-dark-2);}
+
+/* contact list */
+.clist{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+.clist a,.clist div{display:flex;gap:16px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;}
+.clist a:hover .clist__v{color:var(--aqua);}
+.clist__k{font-family:var(--f-head);font-weight:700;font-size:14px;color:var(--ink-3);min-width:120px;}
+.clist__v{font-size:17px;}
+.clist__v{overflow-wrap:anywhere;}
+@media (max-width:430px){
+  .clist a,.clist div{flex-direction:column;gap:3px;}
+  .clist__k{min-width:0;}
+}
+
+/* footer */
+.ftr{background:#0B1432;color:var(--on-dark-2);padding-block:60px 30px;font-size:16px;}
+.ftr__grid{display:grid;gap:38px;grid-template-columns:repeat(auto-fit,minmax(min(215px,100%),1fr));}
+.ftr h4{font-family:var(--f-head);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#8FE3EC;margin-bottom:14px;}
+.ftr a{color:var(--on-dark-2);text-decoration:none;}
+.ftr a:hover{color:#fff;}
+.ftr__links{display:flex;flex-direction:column;gap:9px;}
+.ftr__bottom{margin-top:42px;padding-top:22px;border-top:1px solid var(--dark-line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-size:14px;}
+.ftr__cross a{color:#8FE3EC;text-decoration:underline;text-underline-offset:3px;}
+
+.previewbar{
+  background:var(--amber);color:#3A2408;font-family:var(--f-head);
+  font-size:13.5px;font-weight:700;text-align:center;padding:9px 16px;
+}
+</style>
+
+<div class="previewbar">Vista previa · los espacios de foto están marcados y los formularios no envían datos</div>
+
+<div class="topbar">
+  <div class="wrap topbar__in">
+    <a href="https://wa.me/5493424724998" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.1-.8-2.6-1.1-4.2-3.8-4.4-4-.1-.2-1-1.3-1-2.6 0-1.2.6-1.8.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2 0 .4-.1.5l-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.2 1.5 1.9 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.6-.1l.7-.8c.2-.2.3-.2.6-.1l1.8.9c.3.1.5.2.6.3.1.2.1.7-.1 1.2Z"/></svg>
+      <span>+54 9 342 472 4998</span>
+    </a>
+    <a href="https://portal-alumnos-opal.vercel.app/login" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M8.2 10.5V7.8a3.8 3.8 0 0 1 7.6 0v2.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15.4" r="1.5" fill="currentColor"/></svg>
+      <span>Portal de alumnos</span>
+    </a>
+  </div>
+</div>
+
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="brand" href="#/inicio">
+      <svg class="brand__mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="23" fill="var(--violet)"/>
+        <circle cx="24" cy="24" r="18.5" fill="none" stroke="#8FE3EC" stroke-width="1.5" opacity=".55"/>
+        <path d="M24 13v11M18.5 18.5h11" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+        <path d="M9 31.5c2.7 0 2.7 2.6 5.4 2.6s2.7-2.6 5.4-2.6 2.7 2.6 5.4 2.6 2.7-2.6 5.4-2.6 2.7 2.6 5.4 2.6" stroke="#8FE3EC" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <span class="brand__txt">
+        <span class="brand__a">Escuela de Guardavidas</span>
+        <span class="brand__b">ONG Sumar Salud</span>
+      </span>
+    </a>
+
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <nav class="nav" id="nav">
+      <a href="#/inicio">Inicio</a>
+      <a href="#/escuela">La Escuela</a>
+      <a href="#/curso">Formación</a>
+      <a href="#/pre-curso">Pre-curso 2027</a>
+      <a href="#/proximamente">Próximamente</a>
+      <a href="#/contacto">Contacto</a>
+    </nav>
+
+    <div class="hdr__cta">
+      <a class="btn btn--primary" href="#/inscripcion">Inscribite</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==========================================================
+     INICIO
+     ========================================================== -->
+<div class="view" id="v-inicio">
+  <div class="hero">
+    <div class="wrap hero__in">
+      <p class="kicker kicker--light">ONG Sumar Salud · Santa Fe Capital</p>
+      <h1>Formación Profesional de Guardavidas</h1>
+      <p class="hero__sub">Título habilitante nacional e internacional, en una formación de un año.</p>
+      <p class="hero__lede">Formamos guardavidas capaces de desempeñarse en la seguridad de espejos de agua —mar, lago, río—, natatorios y piscinas. Cursada en el Club Gimnasia y Esgrima, Santa Fe Capital.</p>
+      <div class="hero__actions">
+        <a class="btn btn--lg btn--primary" href="#/curso">Ver la formación</a>
+        <a class="btn btn--lg btn--outlineDark" href="#/pre-curso">Pre-curso 2027</a>
+      </div>
+      <span class="hero__note">Inscripción abierta al pre-curso</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap split">
+      <div class="split__txt">
+        <h2>Una formación corta con amplia salida laboral</h2>
+        <h3>Se cursa de abril a diciembre.</h3>
+        <p class="body">Doce asignaturas y nueve docentes: natación y entrenamiento, tácticas y técnicas de rescate, primeros auxilios, anatomía, fisiología, ética profesional y responsabilidad civil y penal. Las prácticas profesionalizantes se completan en enero y febrero.</p>
+        <p class="body">Lo invertido en la formación se recupera en dos meses de trabajo: es una de las pocas profesiones con un retorno tan rápido.</p>
+        <div class="split__actions"><a class="btn btn--primary" href="#/curso">Saber más</a></div>
+      </div>
+      <div class="split__media">
+        <div class="ph">
+          <img src="img/formacion.jpg" alt="Clase práctica o grupo de la camada. Horizontal" loading="lazy">
+          <div class="ph__guide">
+            <div>
+              <p class="slot__t">Foto · Portada de la formación</p>
+              <p class="slot__d">Clase práctica o grupo de la camada. Horizontal.</p>
+              <span class="ph__file">img/formacion.jpg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap split split--flip">
+      <div class="split__txt">
+        <h2>Empezá por el pre-curso</h2>
+        <h3>Arranca el 16 de noviembre de 2026 y podés sumarte cuando quieras.</h3>
+        <p class="body">Para ingresar a la formación hay que rendir un examen de natación exigente. El pre-curso te prepara para rendirlo: evaluación individual al inicio, corrección de técnica y entrenamiento tres veces por semana hasta marzo.</p>
+        <div class="split__actions">
+          <a class="btn btn--primary" href="#/pre-curso">Ver el pre-curso</a>
+          <a class="btn btn--ghost" href="#/inscripcion">Inscribirme</a>
+        </div>
+      </div>
+      <div class="split__media">
+        <div class="ph">
+          <img src="img/precurso.jpg" alt="Nado en pileta, tomada desde el borde" loading="lazy">
+          <div class="ph__guide">
+            <div>
+              <p class="slot__t">Foto · Pre-curso</p>
+              <p class="slot__d">Nado en pileta, tomada desde el borde.</p>
+              <span class="ph__file">img/precurso.jpg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap stack" style="gap:44px;">
+      <div class="sec-head center">
+        <p class="kicker kicker--light">De un vistazo</p>
+        <h2>Qué implica formarte con nosotros</h2>
+      </div>
+      <div class="stats">
+        <div><div class="stat__n">1 año</div><div class="stat__l">de formación, más las prácticas profesionalizantes</div></div>
+        <div><div class="stat__n">5 días</div><div class="stat__l">de cursada por semana: 3 de práctica y 2 de teoría</div></div>
+        <div><div class="stat__n">600 m</div><div class="stat__l">el examen de ingreso, que el pre-curso te prepara para rendir</div></div>
+        <div><div class="stat__n">2 meses</div><div class="stat__l">de trabajo para recuperar lo invertido</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap stack" style="gap:44px;">
+      <div class="sec-head center">
+        <p class="kicker">Por qué acá</p>
+        <h2>Lo que distingue a la escuela</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7.5 3.2v5.5c0 4.4-3.2 7.6-7.5 9.3-4.3-1.7-7.5-4.9-7.5-9.3V6.2L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12.2l2.2 2.2 4-4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Título habilitante</h3>
+          <p>Nacional e internacional. Habilita a trabajar en mar, lago, río, natatorios y piscinas.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.6-5.9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M20 3.5V8h-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4.4l3 1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>Formación integral y actualizada</h3>
+          <p>Trabajamos con los protocolos vigentes y los actualizamos apenas cambian, tanto a nivel nacional como internacional. Lo que aprendés es lo que se aplica hoy en el puesto.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico ico--amber"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <h3>Evaluación transparente</h3>
+          <p>Los criterios de evaluación se comparten desde el primer día. Sabés siempre cómo se te evalúa, con qué escala y en qué situación estás. Sin sorpresas a fin de año.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V9M9.3 19V5M14.7 19v-8M20 19V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <h3>Salida laboral rápida</h3>
+          <p>Lo invertido en la formación se recupera en dos meses de trabajo.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16.5 14.6c2.3.2 4 1.9 4 4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h3>Equipo interdisciplinario</h3>
+          <p>Entrenadores de natación, guardavidas, médicos, abogados y psicólogos. Con el respaldo de una ONG de emergencias avalada por protocolos internacionales AIDER.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10.6 12 4l9 6.6V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-9.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 21v-6h5v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <h3>Sede con pileta y aulas</h3>
+          <p>Club Gimnasia y Esgrima, 4 de Enero 2011: todas las actividades teóricas y prácticas en un mismo lugar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap stack center" style="gap:22px;">
+      <span class="pill pill--open">Inscripción abierta</span>
+      <h2 style="font-size:clamp(26px,3.8vw,38px);max-width:20ch;">Pre-curso 2027</h2>
+      <p class="lead" style="text-align:center;">Cupos limitados: el trabajo es individualizado y la técnica se corrige uno por uno.</p>
+      <div><a class="btn btn--lg btn--primary" href="#/inscripcion">Inscribite ahora</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     LA ESCUELA
+     ========================================================== -->
+<div class="view" id="v-escuela">
+  <div class="hero hero--slim">
+    <div class="wrap hero__in" style="padding-block:clamp(44px,6vw,72px);">
+      <p class="kicker kicker--light">La Escuela</p>
+      <h1 style="font-size:clamp(30px,5vw,48px);">Perfil del Guardavidas</h1>
+      <p class="hero__lede">Un perfil renovado y actualizado, a la altura de las exigencias del mercado laboral.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap split">
+      <div class="split__txt">
+        <h2>Quiénes somos</h2>
+        <h3>El área de formación en salvamento acuático de la Asociación Civil Sumar Salud.</h3>
+        <p class="body">Somos una ONG de Santa Fe integrada por profesionales de la salud: Técnicos Superiores en Emergencias Médicas, docentes, médicos, enfermeros e investigadores dedicados a la atención de emergencias y al traslado de pacientes críticos en el ámbito prehospitalario.</p>
+        <p class="body">En 2022 sumamos el Curso de Formación Profesional de Guardavidas, pensado en nuestro estatuto como un espacio de actualización, capacitación, investigación y formación de especialistas de rápida inserción laboral, acompañado de talleres de especialización en salvamento acuático.</p>
+      </div>
+      <div class="split__media">
+        <div class="ph">
+          <img src="img/instalaciones.jpg" alt="Pileta y aula del Club Gimnasia y Esgrima" loading="lazy">
+          <div class="ph__guide">
+            <div>
+              <p class="slot__t">Foto · Instalaciones</p>
+              <p class="slot__d">Pileta y aula del Club Gimnasia y Esgrima.</p>
+              <span class="ph__file">img/instalaciones.jpg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap split split--flip">
+      <div class="split__txt">
+        <h2>Nuestro marco</h2>
+        <h3>Reglamento GV01 del Consejo Provincial de Guardavidas.</h3>
+        <p class="body">La formación se rige por el reglamento GV01, dependiente del Ministerio de Educación de la Provincia de Santa Fe. Dentro de ese marco sumamos contenidos propios. Los contenidos de emergencias de la ONG cuentan con aval bajo <strong>protocolos internacionales AIDER</strong>.</p>
+        <p class="body">El curso tiene un reglamento interno que se entrega antes de iniciar la cursada, y que regula asistencia y faltas, plazos y modalidades de pago, y responsabilidades sobre instalaciones, materiales y trato con docentes y compañeros.</p>
+      </div>
+      <div class="split__media">
+        <div class="callout">
+          <p class="callout__t">Perfil del guardavidas</p>
+          <p>Contribuimos al mejoramiento de la calidad de los servicios de nuestra especialidad, no solo atendiendo a la demanda sino haciendo propuestas innovadoras y creativas producto del desarrollo científico.</p>
+          <p>Ponemos a la capacitación dentro de un sistema sustentable y permanente en el tiempo al servicio de las necesidades de la sociedad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap stack center" style="gap:18px;">
+      <p class="kicker kicker--light">Dónde cursamos</p>
+      <h2 style="font-size:clamp(26px,3.8vw,38px);max-width:22ch;">Club Gimnasia y Esgrima, 4 de Enero 2011</h2>
+      <p class="lead" style="text-align:center;">Todas las actividades, teóricas y prácticas, se dictan ahí: aulas amplias con material didáctico y tecnológico de última generación, y el espacio necesario para las actividades específicas de la formación profesional.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap stack" style="gap:32px;">
+      <div class="sec-head center">
+        <p class="kicker">Equipo docente</p>
+        <h2>Quién da cada materia</h2>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Asignatura</th><th>Docente</th><th>Duración</th></tr></thead>
+          <tbody>
+            <tr><td>Natación y Entrenamiento</td><td>Gustavo Martínez</td><td>Anual</td></tr>
+            <tr><td>Tácticas y Estrategias de Rescate</td><td>Gerónimo Jáuregui / Joana Durán</td><td>Anual</td></tr>
+            <tr><td>Técnicas de Salvamento</td><td>Gerónimo Jáuregui / Joana Durán</td><td>Anual</td></tr>
+            <tr><td>Respiración Artificial</td><td>Rodrigo Mendoza</td><td>Anual</td></tr>
+            <tr><td>Primeros Auxilios</td><td>Rodrigo Mendoza</td><td>Anual</td></tr>
+            <tr><td>Anatomía</td><td>Javier Núñez</td><td>Anual</td></tr>
+            <tr><td>Fisiología</td><td>Javier Núñez</td><td>Anual</td></tr>
+            <tr><td>Educación Sanitaria</td><td>Diego H. Pérez</td><td>Cuatrimestral</td></tr>
+            <tr><td>Vientos, Mareas y Navegación</td><td>Santiago Castillo</td><td>Cuatrimestral</td></tr>
+            <tr><td>Ética Profesional para el Guardavidas</td><td>Néstor Baldacci</td><td>Cuatrimestral</td></tr>
+            <tr><td>Responsabilidad Civil y Penal</td><td>Néstor Baldacci</td><td>Cuatrimestral</td></tr>
+            <tr><td>Psicología Social</td><td>Débora Farabolini</td><td>Cuatrimestral</td></tr>
+            <tr><td>Prácticas Profesionalizantes</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap stack" style="gap:32px;">
+      <div class="sec-head center">
+        <p class="kicker">Conducción de la ONG</p>
+        <h2>Quiénes están detrás</h2>
+      </div>
+      <div class="grid grid--2">
+        <div class="card"><h3>Diego Pérez</h3><p><strong>Presidente.</strong> Técnico Superior en Emergencias Médicas. Guardavidas. Formador instructor AIDER en RCP, PS, DEA y Manejo de Trauma Básico.</p></div>
+        <div class="card"><h3>Lorena Blesa</h3><p>Enfermera profesional, Guardia de Emergencias Médicas, Hospital San Justo. Instructora Internacional AIDER. Filial San Justo — 3498 417260.</p></div>
+        <div class="card"><h3>Daniel Centurión</h3><p>Director de Protección Civil, Funes. Filial Funes — 341 3016684.</p></div>
+        <div class="card"><h3>Dra. Verónica del Favero</h3><p>Cirugía plástica reconstructiva y del quemado, Hospital Cullen (Santa Fe).</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     FORMACIÓN
+     ========================================================== -->
+<div class="view" id="v-curso">
+  <div class="hero hero--slim">
+    <div class="wrap hero__in" style="padding-block:clamp(48px,7vw,84px);">
+      <p class="kicker kicker--light">Formación de 1 año · Pronta salida laboral</p>
+      <h1 style="font-size:clamp(30px,5.2vw,52px);">Formación Profesional de Guardavidas</h1>
+      <p class="hero__sub">Título habilitante nacional e internacional.</p>
+      <p class="hero__lede">Para desempeñarse en la seguridad de espejos de agua —mar, lago, río—, natatorios y piscinas.</p>
+      <div class="hero__actions"><a class="btn btn--lg btn--onDark" href="#/contacto">Solicitar información</a></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap stack" style="gap:44px;">
+      <div class="sec-head center">
+        <p class="kicker">Requisitos</p>
+        <h2>Para ingresar a la formación necesitás cumplir con lo siguiente</h2>
+      </div>
+      <div class="grid grid--4">
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c0-3.6 3.1-5.8 7-5.8s7 2.2 7 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h4>Ser mayor de 18 años</h4>
+          <p>O cumplirlos antes del 30 de junio del año de cursada. No hay edad máxima.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7.5 12 4l9 3.5-9 3.5-9-3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6.5 10v5c0 1.7 2.5 3 5.5 3s5.5-1.3 5.5-3v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h4>Secundario completo</h4>
+          <p>Estudios secundarios finalizados.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 16.5c2.2 0 2.2-2 4.5-2s2.2 2 4.5 2 2.2-2 4.5-2 2.2 2 4.5 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="15" cy="6.5" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 12l4.5-2.5 3 1.5 2.5-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h4>Saber nadar</h4>
+          <p>Estilos crawl y pecho.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico ico--amber"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 4h8M12 4v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="14" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v3.2l2 1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <h4>Apto médico</h4>
+          <p>Certificado de aptitud para esfuerzos intensos.</p>
+        </div>
+      </div>
+      <div class="callout" style="max-width:80ch;margin-inline:auto;">
+        <p class="callout__t">Inscripción</p>
+        <p>Se abona antes de comenzar las clases. La ventana de pago va desde la segunda mitad de febrero hasta abril inclusive.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="split__txt">
+        <p class="kicker kicker--light">Examen de ingreso · Obligatorio</p>
+        <h2>Se rinde en abril, al comenzar la formación</h2>
+        <p class="body">Todo aspirante rinde el examen de ingreso. La prueba específica de destreza queda a criterio de la dirección de la escuela, y el resultado se conversa personalmente con cada uno.</p>
+        <p class="body"><strong>Dónde:</strong> Club Gimnasia y Esgrima, 4 de Enero 2011. <strong>Requisito:</strong> apto médico. <strong>Cupos limitados.</strong></p>
+        <div class="split__actions"><a class="btn btn--lg btn--primary" href="#/pre-curso">¿No llegás a estas marcas? Mirá el pre-curso</a></div>
+      </div>
+      <div class="split__media">
+        <ul class="checks">
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>300 metros crawl</strong> — primer tramo, sin descanso.</p></li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>300 metros pecho</strong> — segundo tramo, en ese orden.</p></li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>14 minutos</strong> — tiempo máximo para los 600 metros completos.</p></li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>25 metros de nado subacuático</strong> — sin tiempo.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split split--flip">
+      <div class="split__txt">
+        <h2>Duración y calendario</h2>
+        <h3>Un año de cursada más las prácticas profesionalizantes.</h3>
+        <div class="dl">
+          <div class="dl__row"><span class="dl__k">Cursada</span><span class="dl__v"><strong>Abril a diciembre</strong></span></div>
+          <div class="dl__row"><span class="dl__k">Prácticas</span><span class="dl__v">Enero y febrero del año siguiente, para completar las horas reloj</span></div>
+          <div class="dl__row"><span class="dl__k">Examen de ingreso</span><span class="dl__v">Abril, en la sede. La fecha exacta se comunica al inscribirte</span></div>
+          <div class="dl__row"><span class="dl__k">Pre-curso</span><span class="dl__v">Optativo, de noviembre a marzo</span></div>
+        </div>
+      </div>
+      <div class="split__txt">
+        <h2>Modalidad de cursada</h2>
+        <h3>Teóricas y prácticas, todo en la misma sede.</h3>
+        <div class="dl">
+          <div class="dl__row"><span class="dl__k">Lun · Mié · Vie</span><span class="dl__v"><strong>21:30 a 23:30</strong> — Natación y Salvamento Acuático</span></div>
+          <div class="dl__row"><span class="dl__k">Mar · Jue</span><span class="dl__v"><strong>20:00 a 22:30</strong> — Teóricas</span></div>
+          <div class="dl__row"><span class="dl__k">Sede</span><span class="dl__v">Club Gimnasia y Esgrima — 4 de Enero 2011, Santa Fe Capital</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap stack" style="gap:32px;">
+      <div class="sec-head center">
+        <p class="kicker">Plan de estudios</p>
+        <h2>Estructura curricular</h2>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Asignatura</th><th>Docente</th><th>Duración</th></tr></thead>
+          <tbody>
+            <tr><td>Natación y Entrenamiento</td><td>Gustavo Martínez</td><td>Anual</td></tr>
+            <tr><td>Tácticas y Estrategias de Rescate</td><td>Gerónimo Jáuregui / Joana Durán</td><td>Anual</td></tr>
+            <tr><td>Técnicas de Salvamento</td><td>Gerónimo Jáuregui / Joana Durán</td><td>Anual</td></tr>
+            <tr><td>Respiración Artificial</td><td>Rodrigo Mendoza</td><td>Anual</td></tr>
+            <tr><td>Primeros Auxilios</td><td>Rodrigo Mendoza</td><td>Anual</td></tr>
+            <tr><td>Anatomía</td><td>Javier Núñez</td><td>Anual</td></tr>
+            <tr><td>Fisiología</td><td>Javier Núñez</td><td>Anual</td></tr>
+            <tr><td>Educación Sanitaria</td><td>Diego H. Pérez</td><td>Cuatrimestral</td></tr>
+            <tr><td>Vientos, Mareas y Navegación</td><td>Santiago Castillo</td><td>Cuatrimestral</td></tr>
+            <tr><td>Ética Profesional para el Guardavidas</td><td>Néstor Baldacci</td><td>Cuatrimestral</td></tr>
+            <tr><td>Responsabilidad Civil y Penal</td><td>Néstor Baldacci</td><td>Cuatrimestral</td></tr>
+            <tr><td>Psicología Social</td><td>Débora Farabolini</td><td>Cuatrimestral</td></tr>
+            <tr><td>Prácticas Profesionalizantes</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div class="split__media">
+        <div class="price">
+          <span class="pill pill--soon">Se publica el 20/02/2027</span>
+          <h2 style="font-size:25px;">Aranceles del ciclo 2027</h2>
+          <p class="body">Los montos de inscripción y cuota mensual se anuncian el <strong>20 de febrero de 2027</strong>. Dejanos tu correo y te avisamos ese mismo día.</p>
+          <form class="stack" style="gap:12px;" data-preview-form>
+            <div class="field">
+              <label for="avisoMail">Tu correo</label>
+              <input id="avisoMail" type="email" placeholder="nombre@correo.com" required>
+            </div>
+            <button class="btn btn--amber" type="submit">Avisame cuando se publiquen</button>
+            <small data-preview-msg style="color:var(--ink-3);font-size:14px;"></small>
+          </form>
+        </div>
+      </div>
+      <div class="split__txt">
+        <h2>Formas de pago</h2>
+        <h3>Cuatro modalidades, con descuento por pago anual.</h3>
+        <div class="dl">
+          <div class="dl__row"><span class="dl__k">Transferencia</span><span class="dl__v">Alias <strong>sumarsaludong</strong></span></div>
+          <div class="dl__row"><span class="dl__k">Efectivo</span><span class="dl__v">En la administración</span></div>
+          <div class="dl__row"><span class="dl__k">Tarjeta</span><span class="dl__v">Crédito, con 4,5% de recargo</span></div>
+          <div class="dl__row"><span class="dl__k">Pago anual</span><span class="dl__v"><strong>15% de descuento</strong> sobre el monto total</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap stack" style="gap:28px;">
+      <div class="sec-head center">
+        <p class="kicker">Dudas</p>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="faq" style="margin-inline:auto;width:100%;">
+        <details><summary>¿Necesito ser un nadador experto?</summary><p>No es necesario ser un nadador experto, pero sí vas a rendir el examen de ingreso, que evalúa habilidades básicas de natación y nado subacuático.</p></details>
+        <details><summary>¿Qué equipo debo llevar al curso?</summary><p>Para el inicio, elementos básicos de natación: antiparras, gorro y malla. Más avanzado el curso se solicitan aletas, torpedo y el uniforme institucional completo.</p></details>
+        <details><summary>¿Qué pasa si no puedo asistir a una clase?</summary><p>El reglamento interno establece una política de asistencia con una cantidad limitada de faltas justificadas. Superar el límite puede llevar a sanciones.</p></details>
+        <details><summary>¿Puedo inscribirme si aún no cumplí 18 años?</summary><p>Sí, si los cumplís antes del 30 de junio del año en curso.</p></details>
+        <details><summary>¿Qué diferencia hay entre el curso regular y el pre-curso?</summary><p>El pre-curso es opcional y está diseñado para mejorar tus habilidades teórico-prácticas antes del examen de ingreso obligatorio. La formación es la que te habilita como guardavidas una vez completada.</p></details>
+        <details><summary>¿Hay límite de edad para inscribirse?</summary><p>No hay edad máxima, siempre que cumplas con los requisitos de salud física y aptitud médica para esfuerzos intensos.</p></details>
+        <details><summary>¿Qué sucede si no puedo pagar una cuota a tiempo?</summary><p>Es importante cumplir con los plazos de pago establecidos, pero si surge algún imprevisto comunicate con la administración y acordamos un plan de pago alternativo.</p></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     PRE-CURSO
+     ========================================================== -->
+<div class="view" id="v-pre-curso">
+  <div class="hero">
+    <div class="wrap hero__in">
+      <p class="kicker kicker--light">Ciclo 2027 · Inscripción abierta</p>
+      <h1>Curso Preparatorio de Guardavidas</h1>
+      <p class="hero__sub">Asegurá tu ingreso a la formación.</p>
+      <p class="hero__lede">Una preparación sólida en natación para que llegues con ventaja al examen de ingreso y al curso completo, que comienza en abril de 2027.</p>
+      <div class="hero__actions"><a class="btn btn--lg btn--primary" href="#/inscripcion">Inscribirme al pre-curso</a></div>
+      <span class="hero__note">Arranca el lunes 16 de noviembre de 2026</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap split">
+      <div class="split__txt">
+        <h2>Opcional, pero altamente recomendado</h2>
+        <h3>Podés unirte en cualquier momento, cualquier mes.</h3>
+        <p class="body">Es una instancia para fortalecer tus habilidades en natación antes del curso oficial. No es obligatoria, y nuestros egresados la señalan como la diferencia entre llegar entrenado o llegar improvisando.</p>
+        <p class="body">Al inicio se hace una evaluación individual de cada alumno, que permite planificar el entrenamiento general, los trabajos específicos y el perfeccionamiento de las técnicas de nado: crawl, pecho y over.</p>
+      </div>
+      <div class="split__media">
+        <div class="price">
+          <span class="pill pill--open">Inscripción abierta</span>
+          <div class="price__big">$60.000<small>por mes</small></div>
+          <div class="dl" style="border-top:none;">
+            <div class="dl__row" style="padding-top:0;"><span class="dl__k">Inicio</span><span class="dl__v"><strong>Lunes 16/11/2026</strong></span></div>
+            <div class="dl__row"><span class="dl__k">Finaliza</span><span class="dl__v">Marzo de 2027</span></div>
+            <div class="dl__row"><span class="dl__k">Días</span><span class="dl__v">Lunes, miércoles y viernes</span></div>
+            <div class="dl__row"><span class="dl__k">Horario</span><span class="dl__v">21:30 a 22:30</span></div>
+            <div class="dl__row"><span class="dl__k">Lugar</span><span class="dl__v">Club Gimnasia y Esgrima — 4 de Enero 2011</span></div>
+            <div class="dl__row" style="border-bottom:none;"><span class="dl__k">Noviembre</span><span class="dl__v">Si arrancás en la quincena, ese mes abonás el 50%: <strong>$30.000</strong></span></div>
+          </div>
+          <a class="btn btn--primary" href="#/inscripcion">Reservar mi lugar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap stack" style="gap:44px;">
+      <div class="sec-head center">
+        <p class="kicker">Requisitos</p>
+        <h2>Qué necesitás para participar</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="card card--center">
+          <span class="ico ico--amber"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h9l4 4v14H6V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14.5 3v4.5H19" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 14l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h4>Certificado de aptitud física</h4>
+          <p>Se presenta en la primera semana. Si lo emite un profesional particular debe estar estampillado; si es de una entidad oficial, como un hospital público, no hace falta estampilla.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="9" r="5.5" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 13 5 21l7-2.5L19 21l-2.5-8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <h4>Ropa de natación adecuada</h4>
+          <p>Gorro, antiparras y malla.</p>
+        </div>
+        <div class="card card--center">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 17c2.2 0 2.2-2 4.5-2s2.2 2 4.5 2 2.2-2 4.5-2 2.2 2 4.5 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="15.5" cy="6" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 12.5 8.5 10l3 1.5 2.5-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h4>Saber nadar</h4>
+          <p>Estilo crawl/libre, y bases del estilo pecho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="split__txt">
+        <p class="kicker kicker--light">Beneficios</p>
+        <h2>Qué te llevás del pre-curso</h2>
+      </div>
+      <div class="split__media">
+        <ul class="checks">
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Mejorás tu técnica de natación antes del curso oficial.</p></li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Llegás con la confianza necesaria para rendir el examen de ingreso.</p></li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Asesoramiento personalizado para reforzar las áreas donde necesites mejorar. No somos una escuela de natación, pero esta es la etapa donde se hace hincapié en pulir la técnica.</p></li>
+          <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.2 3.2L13 4.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p>Ingreso flexible: podés sumarte en cualquier momento entre noviembre y marzo.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split split--flip">
+      <div class="split__txt">
+        <h2>Formas de pago</h2>
+        <h3>Efectivo o transferencia, mes a mes.</h3>
+        <div class="dl">
+          <div class="dl__row"><span class="dl__k">Efectivo</span><span class="dl__v">En el natatorio</span></div>
+          <div class="dl__row"><span class="dl__k">Transferencia</span><span class="dl__v">Alias <strong>sumarsaludong</strong></span></div>
+        </div>
+        <div class="callout">
+          <p class="callout__t">Enviá el comprobante</p>
+          <p>A <strong>contacto@sumarsalud.org</strong> o al WhatsApp <strong>+54 9 342 472 4998</strong>, con el asunto <em>"Cuota precurso [Tu Nombre y Apellido]"</em>.</p>
+        </div>
+      </div>
+      <div class="split__media">
+        <div class="ph">
+          <img src="img/entrenamiento.jpg" alt="Nado en pileta, tomada desde el borde, en horario nocturno" loading="lazy">
+          <div class="ph__guide">
+            <div>
+              <p class="slot__t">Foto · Entrenamiento</p>
+              <p class="slot__d">Nado en pileta, tomada desde el borde, en horario nocturno.</p>
+              <span class="ph__file">img/entrenamiento.jpg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap stack" style="gap:28px;">
+      <div class="sec-head center">
+        <p class="kicker">Dudas</p>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="faq" style="margin-inline:auto;width:100%;">
+        <details><summary>¿Necesito ser un nadador experto?</summary><p>No es necesario ser un nadador experto, pero sí necesitás conocimientos previos de natación.</p></details>
+        <details><summary>¿Puedo sumarme con el pre-curso ya empezado?</summary><p>Sí, en cualquier momento y cualquier mes. Cuanto antes entres, más margen tenés para llegar a las marcas del ingreso.</p></details>
+        <details><summary>¿Puedo inscribirme si aún no cumplí 18 años?</summary><p>Sí, si los cumplís antes del 30 de junio del año en que inicia el curso.</p></details>
+        <details><summary>¿Qué diferencia hay con el curso regular?</summary><p>El pre-curso es opcional y prepara para el examen de ingreso obligatorio. La formación es la que habilita como guardavidas.</p></details>
+        <details><summary>¿Hay límite de edad?</summary><p>No hay edad máxima, siempre que cumplas con los requisitos de aptitud médica para esfuerzos intensos.</p></details>
+        <details><summary>¿Y si después no sigo con la formación?</summary><p>Se paga mes a mes y no te obliga a inscribirte al curso.</p></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     PRÓXIMAMENTE
+     ========================================================== -->
+<div class="view" id="v-proximamente">
+  <div class="hero hero--slim">
+    <div class="wrap hero__in" style="padding-block:clamp(44px,6vw,72px);">
+      <p class="kicker kicker--light">Para guardavidas en actividad</p>
+      <h1 style="font-size:clamp(30px,5vw,48px);">Lo que viene</h1>
+      <p class="hero__lede">Estamos preparando dos líneas de capacitación para guardavidas ya recibidos. Todavía no tienen fecha: dejanos tu contacto y sos de los primeros en enterarte.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap grid grid--2">
+      <div class="card">
+        <span class="pill pill--soon">En preparación</span>
+        <span class="ico" style="margin-top:6px;"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="3" width="8" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 17v4M9 21h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10.5 8h3M12 6.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Taller de oxigenoterapia en ahogamiento</h3>
+        <p>Manejo del oxígeno en el paciente ahogado: cuándo, cómo y con qué. Dispositivos, protocolos y práctica.</p>
+      </div>
+      <div class="card">
+        <span class="pill pill--soon">En preparación</span>
+        <span class="ico" style="margin-top:6px;"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h4l2-5 3 10 2.5-7 1.8 4H21" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Entrenamientos y simulaciones con protocolos</h3>
+        <p>Escenarios de rescate y emergencia trabajados de punta a punta, con los protocolos aplicados en tiempo real y devolución sobre lo que pasó.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="split__txt">
+        <h2>Avisame cuando abran</h2>
+        <h3 style="color:#8FE3EC;">Sin spam: te escribimos apenas haya fecha, cupo y valor.</h3>
+        <p class="body">Dejanos tu mail y tu WhatsApp. Si sos guardavidas recibido, contanos qué línea te interesa más — nos sirve para definir cupos y horarios.</p>
+      </div>
+      <div class="split__media">
+        <form class="form form--onDark" data-preview-form>
+          <div class="field"><label for="pxNombre">Nombre</label><input id="pxNombre" type="text" required></div>
+          <div class="field"><label for="pxMail">Correo</label><input id="pxMail" type="email" required></div>
+          <div class="field"><label for="pxWa">WhatsApp</label><input id="pxWa" type="tel" required></div>
+          <div class="field"><label for="pxRec">¿Sos guardavidas recibido?</label><select id="pxRec"><option>Sí</option><option>En formación</option><option>No</option></select></div>
+          <div class="field field--full"><label for="pxInt">¿Cuál te interesa?</label><select id="pxInt"><option>Oxigenoterapia en ahogamiento</option><option>Entrenamientos y simulaciones</option><option>Ambas</option></select></div>
+          <div class="field field--full">
+            <button class="btn btn--onDark" type="submit">Avisame</button>
+            <small data-preview-msg style="margin-top:10px;"></small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="ph ph--short">
+          <img src="img/oxigenoterapia.jpg" alt="Práctica con torso y equipo de oxígeno" loading="lazy">
+          <div class="ph__guide">
+            <div>
+              <p class="slot__t">Foto · Próximamente</p>
+              <p class="slot__d">Práctica con torso y equipo de oxígeno.</p>
+              <span class="ph__file">img/oxigenoterapia.jpg</span>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     INSCRIPCIÓN
+     ========================================================== -->
+<div class="view" id="v-inscripcion">
+  <div class="hero hero--slim">
+    <div class="wrap hero__in" style="padding-block:clamp(44px,6vw,72px);">
+      <p class="kicker kicker--light">Pre-curso 2027</p>
+      <h1 style="font-size:clamp(30px,5vw,48px);">Inscribite</h1>
+      <p class="hero__lede">Completá el formulario y te sumamos al grupo de WhatsApp del ciclo, donde se comunican fechas, materiales y novedades.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap stack" style="gap:48px;">
+      <div class="steps">
+        <div class="step"><h3>Completás el formulario</h3><p>Cinco minutos.</p></div>
+        <div class="step"><h3>Te escribimos</h3><p>Confirmamos cupo y forma de pago, y te sumamos al grupo de WhatsApp.</p></div>
+        <div class="step"><h3>Arrancás</h3><p>Podés empezar en cualquier momento entre el 16 de noviembre de 2026 y marzo de 2027.</p></div>
+      </div>
+
+      <form class="form" data-preview-form>
+        <div class="field"><label for="iNombre">Nombre y apellido</label><input id="iNombre" type="text" required></div>
+        <div class="field"><label for="iDni">DNI</label><input id="iDni" type="text" inputmode="numeric" required></div>
+        <div class="field"><label for="iMail">Correo electrónico</label><input id="iMail" type="email" required></div>
+        <div class="field"><label for="iTel">Teléfono / WhatsApp</label><input id="iTel" type="tel" required></div>
+        <div class="field"><label for="iNac">Fecha de nacimiento</label><input id="iNac" type="date" required></div>
+        <div class="field"><label for="iSec">Título secundario</label><select id="iSec"><option>Completo</option><option>En curso</option><option>No</option></select></div>
+        <div class="field field--full"><label for="iNado">¿Sabés nadar? ¿Qué estilos?</label><input id="iNado" type="text" placeholder="Crawl, pecho, espalda…" required></div>
+        <div class="field field--full">
+          <label for="iMed">Complicaciones médicas a tener en cuenta</label>
+          <textarea id="iMed" required></textarea>
+          <small>Usamos este dato únicamente para adaptar el entrenamiento y actuar ante una emergencia. No se comparte con terceros.</small>
+        </div>
+        <div class="field"><label for="iCanal">¿Por dónde nos conociste?</label><select id="iCanal"><option>Instagram</option><option>Recomendación</option><option>Google</option><option>Otro</option></select></div>
+        <div class="field field--full"><label for="iDudas">Dudas puntuales</label><textarea id="iDudas"></textarea></div>
+        <div class="field field--full"><label class="check"><input type="checkbox" required> Acepto ser contactado por WhatsApp</label></div>
+        <div class="field field--full">
+          <button class="btn btn--lg btn--primary" type="submit">Enviar inscripción</button>
+          <small data-preview-msg style="margin-top:12px;"></small>
+        </div>
+        <p class="formnote">
+          <strong>Esta es una vista previa del sitio:</strong> el formulario no envía ni guarda datos. En producción se monta con Fluent Forms, con notificación a contacto@sumarsalud.org, copia automática a la planilla de Google y autorespuesta con los datos del pre-curso. Mientras tanto, la inscripción real sigue por el <a href="https://forms.gle/p51B1kGKeqsqCBLA9" target="_blank" rel="noopener">formulario oficial</a>.
+        </p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ==========================================================
+     CONTACTO
+     ========================================================== -->
+<div class="view" id="v-contacto">
+  <div class="hero hero--slim">
+    <div class="wrap hero__in" style="padding-block:clamp(44px,6vw,72px);">
+      <p class="kicker kicker--light">Contacto</p>
+      <h1 style="font-size:clamp(30px,5vw,48px);">Hablemos</h1>
+      <p class="hero__lede">Consultas sobre la formación, el pre-curso o convenios institucionales.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap split">
+      <div class="split__txt">
+        <div class="clist">
+          <a href="https://wa.me/5493424724998" target="_blank" rel="noopener"><span class="clist__k">WhatsApp</span><span class="clist__v">+54 9 342 472 4998</span></a>
+          <a href="mailto:contacto@sumarsalud.org"><span class="clist__k">Correo</span><span class="clist__v">contacto@sumarsalud.org</span></a>
+          <a href="https://www.instagram.com/guardavidas.sumarsalud/" target="_blank" rel="noopener"><span class="clist__k">Instagram</span><span class="clist__v">@guardavidas.sumarsalud</span></a>
+          <div><span class="clist__k">Sede</span><span class="clist__v">Club Gimnasia y Esgrima<br>4 de Enero 2011, Santa Fe Capital</span></div>
+          <div><span class="clist__k">Filiales</span><span class="clist__v">San Justo — 3498 417260<br>Funes — 341 3016684</span></div>
+          <div><span class="clist__k">Razón social</span><span class="clist__v">Asociación Civil Sumar Salud<br>CUIT 30-71653650-1</span></div>
+        </div>
+      </div>
+      <div class="split__media">
+        <form class="form" data-preview-form>
+          <div class="field field--full"><label for="cNombre">Nombre</label><input id="cNombre" type="text" required></div>
+          <div class="field"><label for="cMail">Correo</label><input id="cMail" type="email" required></div>
+          <div class="field"><label for="cMotivo">Motivo</label><select id="cMotivo"><option>Formación Profesional de Guardavidas</option><option>Pre-curso 2027</option><option>Convenio institucional</option><option>Otro</option></select></div>
+          <div class="field field--full"><label for="cMsg">Mensaje</label><textarea id="cMsg" required></textarea></div>
+          <div class="field field--full">
+            <button class="btn btn--primary" type="submit">Enviar consulta</button>
+            <small data-preview-msg style="margin-top:10px;"></small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec--soft">
+    <div class="wrap stack" style="gap:26px;">
+      <div class="slot slot--short">
+        <div>
+          <p class="slot__t">Mapa · 4 de Enero 2011</p>
+          <p class="slot__d">Se embebe Google Maps en la versión de producción.</p>
+        </div>
+      </div>
+      <div class="callout callout--amber">
+        <p class="callout__t">¿Buscabas otra cosa?</p>
+        <p>Los cursos de RCP y primeros auxilios para la comunidad, y el alquiler de equipamiento, están en <a href="https://sumarsalud.org" target="_blank" rel="noopener" style="color:var(--aqua);font-weight:700;">sumarsalud.org</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid">
+      <div>
+        <h4>Escuela de Guardavidas</h4>
+        <div class="ftr__links">
+          <a href="#/escuela">La Escuela</a>
+          <a href="#/curso">Formación Profesional</a>
+          <a href="#/pre-curso">Pre-curso 2027</a>
+          <a href="#/proximamente">Próximamente</a>
+          <a href="#/inscripcion">Inscripción</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <div class="ftr__links">
+          <a href="https://wa.me/5493424724998" target="_blank" rel="noopener">+54 9 342 472 4998</a>
+          <a href="mailto:contacto@sumarsalud.org">contacto@sumarsalud.org</a>
+          <a href="https://www.instagram.com/guardavidas.sumarsalud/" target="_blank" rel="noopener">@guardavidas.sumarsalud</a>
+        </div>
+      </div>
+      <div>
+        <h4>Dónde estamos</h4>
+        <div class="ftr__links">
+          <span>Club Gimnasia y Esgrima</span>
+          <span>4 de Enero 2011 — Santa Fe Capital</span>
+          <span>Filial San Justo · Filial Funes</span>
+        </div>
+      </div>
+      <div>
+        <h4>La ONG</h4>
+        <div class="ftr__links">
+          <span>Asociación Civil Sumar Salud</span>
+          <span>CUIT 30-71653650-1</span>
+          <span class="ftr__cross">RCP, primeros auxilios y alquiler de equipamiento en <a href="https://sumarsalud.org" target="_blank" rel="noopener">sumarsalud.org</a></span>
+        </div>
+      </div>
+    </div>
+    <div class="ftr__bottom">
+      <span>Formación regida por el reglamento GV01 del Consejo Provincial de Guardavidas — Ministerio de Educación de Santa Fe.</span>
+      <span>Capacitación y Entrenamiento · © 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ROUTES = ['inicio','escuela','curso','pre-curso','proximamente','inscripcion','contacto'];
+  var nav = document.getElementById('nav');
+  var burger = document.getElementById('burger');
+
+  function currentRoute(){
+    var h = (location.hash || '').replace(/^#\/?/, '');
+    return ROUTES.indexOf(h) > -1 ? h : 'inicio';
+  }
+
+  function render(scroll){
+    var r = currentRoute();
+    ROUTES.forEach(function(name){
+      var el = document.getElementById('v-' + name);
+      if (el) el.classList.toggle('is-active', name === r);
+    });
+    Array.prototype.forEach.call(nav.querySelectorAll('a'), function(a){
+      var target = a.getAttribute('href').replace(/^#\//, '');
+      if (target === r) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    nav.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+    if (scroll) window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('hashchange', function(){ render(true); });
+
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Fotos: si el archivo existe se muestra; si no, queda el recuadro guía.
+  Array.prototype.forEach.call(document.querySelectorAll('.ph img'), function(img){
+    function ok(){ img.parentNode.classList.add('is-ok'); }
+    if (img.complete && img.naturalWidth > 0) ok();
+    img.addEventListener('load', function(){ if (img.naturalWidth > 0) ok(); });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-preview-form]'), function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var msg = form.querySelector('[data-preview-msg]');
+      if (msg) msg.textContent = 'Vista previa: este formulario todavía no envía datos. La inscripción real sigue por el formulario oficial de la escuela.';
+    });
+  });
+
+  render(false);
+})();
+</script>
