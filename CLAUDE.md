@@ -74,18 +74,25 @@ generaba scroll horizontal. Al separarla, la fila principal quedó en ~1110 px.
 
 **Si agregás un ítem al menú o a la barra, corré `tools/check_responsive.py` antes de publicar.**
 
-### Portada de inicio — tiene que entrar sin scrollear
+### Portada de inicio — ocupa la pantalla entera en computadoras
 
-En notebooks (anchas pero de poco alto) la portada se compacta sola para que se lea entera:
-hay un `@media (min-width:900px) and (max-height:1000px)` que ata relleno, espacios y tamaño
-del título al **alto** de la ventana. En un monitor 1080p o más grande no se activa.
+Arriba de 900 px de ancho, la portada mide `calc(100vh - 118px)`: todo lo que queda debajo
+de la barra. Los 118 px son la franja azul (41) más la barra blanca (76 + 1 de borde), y son
+fijos por CSS a ese ancho. **Si cambiás la altura de la barra, hay que cambiar ese número.**
+
+Lo último que se ve sin scrollear tiene que ser la chapita "Inscripción abierta al pre-curso".
+Para que entre en notebooks hay un segundo media query con `max-height:1000px` que ata
+relleno, espacios y tamaño del título al **alto** de la ventana. En monitores más altos no se
+activa: ahí el contenido va a tamaño completo y queda centrado en la pantalla.
 
 Los `max-width` van en `ch`, que escala junto con la tipografía: así los cortes de línea no
 se mueven y la composición se mantiene, solo cambia el tamaño. **Si agregás una línea de
-texto a la portada, medí de nuevo**: a 1366x768 el alto útil es de 542 px y hoy usa 498.
+texto a la portada, medí de nuevo.** Referencias del contenido contra el alto disponible:
+620 → 496/502, 660 → 517/542, 910 → 615/792.
 
-Las portadas de las páginas internas (`hero--slim`) llevan `padding-block` en estilo inline,
-que le gana a esa regla. Si algún día hay que compactarlas también, se saca el inline.
+Las dos reglas llevan `:not(.hero--slim)`. Sin eso, las portadas de las páginas internas
+también pasarían a ocupar la pantalla entera, y son bandas de título. Esas además llevan
+`padding-block` en estilo inline, que le gana a cualquier regla del CSS.
 
 ## Fotos
 

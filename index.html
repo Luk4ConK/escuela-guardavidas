@@ -243,20 +243,29 @@ section{padding-block:clamp(56px, 8vw, 100px);}
 .hero--slim{min-height:auto;}
 .hero--slim .hero h1{font-size:clamp(30px,5vw,48px);}
 
-/* Portada compacta en pantallas anchas pero bajas: las notebooks.
-   Sin esto, en una de 1366x768 la portada mide 818 px contra 542 de alto
-   util y hay que scrollear para leerla entera. En un monitor de 1080p
-   entra igual, por eso el max-height: ahi no cambia nada.
-   Las medidas van en vh para que todo baje junto y la composicion se
-   mantenga. Los max-width quedan en ch, que escala con la tipografia:
-   asi los cortes de linea no se mueven y solo cambia el tamano. */
+/* --- Portada de inicio a pantalla completa (solo en computadoras) ---
+   Ocupa todo lo que queda debajo de la barra, asi lo ultimo que se ve
+   sin scrollear es la chapita de "Inscripcion abierta al pre-curso".
+   Los 118px son la franja azul (41) mas la barra blanca (76 + 1 de
+   borde). Son fijos por CSS arriba de 900px de ancho, no medidos.
+   El :not() es necesario: las portadas internas son .hero--slim y
+   tienen que seguir siendo bandas de titulo, no pantallas enteras. */
+@media (min-width:900px){
+  .hero:not(.hero--slim){min-height:calc(100vh - 118px);}
+}
+
+/* En notebooks (anchas pero de poco alto) ademas hay que achicar el
+   contenido: a tamano completo mide 818 px contra 542 de alto util y
+   no entra. Las medidas van en vh para que todo baje junto, ajustadas
+   para llenar la pantalla sin pasarse.
+   Los max-width quedan en ch, que escala con la tipografia: asi los
+   cortes de linea no se mueven y la composicion se mantiene. */
 @media (min-width:900px) and (max-height:1000px){
-  .hero{min-height:auto;}
-  .hero__in{padding-block:clamp(20px,3.3vh,96px);gap:clamp(8px,1.4vh,20px);}
-  .hero h1{font-size:clamp(28px,5.8vh,60px);}
-  .hero__sub{font-size:clamp(16px,2.7vh,23px);}
-  .hero__lede{font-size:clamp(15px,2.2vh,17.5px);}
-  .hero__actions .btn--lg{padding:12px 28px;font-size:15.5px;}
+  .hero:not(.hero--slim) .hero__in{padding-block:clamp(14px,2.2vh,96px);gap:clamp(7px,1.1vh,20px);}
+  .hero:not(.hero--slim) h1{font-size:clamp(30px,7.1vh,60px);}
+  .hero:not(.hero--slim) .hero__sub{font-size:clamp(16px,3vh,23px);}
+  .hero:not(.hero--slim) .hero__lede{font-size:clamp(15px,2.4vh,17.5px);}
+  .hero:not(.hero--slim) .btn--lg{padding:12px 28px;font-size:15.5px;}
 }
 
 /* ============================================================
