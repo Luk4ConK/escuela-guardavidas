@@ -74,6 +74,19 @@ generaba scroll horizontal. Al separarla, la fila principal quedó en ~1110 px.
 
 **Si agregás un ítem al menú o a la barra, corré `tools/check_responsive.py` antes de publicar.**
 
+### Portada de inicio — tiene que entrar sin scrollear
+
+En notebooks (anchas pero de poco alto) la portada se compacta sola para que se lea entera:
+hay un `@media (min-width:900px) and (max-height:1000px)` que ata relleno, espacios y tamaño
+del título al **alto** de la ventana. En un monitor 1080p o más grande no se activa.
+
+Los `max-width` van en `ch`, que escala junto con la tipografía: así los cortes de línea no
+se mueven y la composición se mantiene, solo cambia el tamaño. **Si agregás una línea de
+texto a la portada, medí de nuevo**: a 1366x768 el alto útil es de 542 px y hoy usa 498.
+
+Las portadas de las páginas internas (`hero--slim`) llevan `padding-block` en estilo inline,
+que le gana a esa regla. Si algún día hay que compactarlas también, se saca el inline.
+
 ## Fotos
 
 Todavía no hay ninguna: la página muestra recuadros punteados con el nombre del archivo que

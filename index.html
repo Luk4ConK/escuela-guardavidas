@@ -243,6 +243,22 @@ section{padding-block:clamp(56px, 8vw, 100px);}
 .hero--slim{min-height:auto;}
 .hero--slim .hero h1{font-size:clamp(30px,5vw,48px);}
 
+/* Portada compacta en pantallas anchas pero bajas: las notebooks.
+   Sin esto, en una de 1366x768 la portada mide 818 px contra 542 de alto
+   util y hay que scrollear para leerla entera. En un monitor de 1080p
+   entra igual, por eso el max-height: ahi no cambia nada.
+   Las medidas van en vh para que todo baje junto y la composicion se
+   mantenga. Los max-width quedan en ch, que escala con la tipografia:
+   asi los cortes de linea no se mueven y solo cambia el tamano. */
+@media (min-width:900px) and (max-height:1000px){
+  .hero{min-height:auto;}
+  .hero__in{padding-block:clamp(20px,3.3vh,96px);gap:clamp(8px,1.4vh,20px);}
+  .hero h1{font-size:clamp(28px,5.8vh,60px);}
+  .hero__sub{font-size:clamp(16px,2.7vh,23px);}
+  .hero__lede{font-size:clamp(15px,2.2vh,17.5px);}
+  .hero__actions .btn--lg{padding:12px 28px;font-size:15.5px;}
+}
+
 /* ============================================================
    ALTERNATING SPLIT — the EPSA rhythm
    ============================================================ */
