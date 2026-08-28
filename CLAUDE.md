@@ -66,7 +66,8 @@ Son **dos filas** a propósito, y la razón es técnica: cuando todo estaba en u
 (logo + menú + teléfono + portal + botón) sumaba ~1580 px contra un contenedor de 1180 y
 generaba scroll horizontal. Al separarla, la fila principal quedó en ~1110 px.
 
-- **Franja angosta azul:** WhatsApp a la izquierda, portal de alumnos a la derecha.
+- **Franja angosta azul:** solo el portal de alumnos, alineado a la derecha. El WhatsApp
+  salió de acá; sigue en el footer y en Contacto.
 - **Barra blanca:** logo, menú, botón "Inscribite".
 - El portal va más discreto que "Inscribite": quien lo busca ya es alumno.
 - Por debajo de 1180 px el menú colapsa en el botón hamburguesa.
