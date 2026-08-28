@@ -79,8 +79,9 @@ generaba scroll horizontal. Al separarla, la fila principal quedó en ~1110 px.
 Todavía no hay ninguna: la página muestra recuadros punteados con el nombre del archivo que
 falta. Apenas se sube el archivo con el nombre correcto, aparece la foto. Ver `img/LEEME.txt`.
 
-El logo actual es un marcador provisorio dibujado en SVG dentro de `index.html`.
-**Falta el logo real de la ONG** (el circular con la estrella de la vida).
+El logo real ya está cargado: `img/logo.png`, en la barra superior. También están
+`img/logo-blanco.png` (negativa, para fondos oscuros) y `img/logo-ong.png` (el de la
+ONG), todavía sin usar.
 
 ## Formularios
 
@@ -94,8 +95,9 @@ contacto@sumarsalud.org, copia a Google Sheets y autorespuesta.
 **El campo "complicaciones médicas" es dato de salud.** Mantener siempre la leyenda que
 aclara para qué se usa, y no exponerlo en mails reenviados ni planillas compartidas de más.
 
-También hay una barra naranja de "Vista previa" arriba de todo: **sacarla antes de publicar
-como sitio definitivo.**
+La barra naranja de "Vista previa" que había arriba de todo **ya se sacó**. El aviso que
+queda dentro del formulario de inscripción es lo único que avisa que no se envía nada:
+no lo saques hasta que los formularios funcionen de verdad.
 
 ## Pendientes
 
@@ -103,11 +105,18 @@ como sitio definitivo.**
 2. El PDF del pre-curso dice "16 de noviembre" arriba y "14" abajo. El sitio usa el 16.
 3. Unificar el teléfono: sumarsalud.org muestra 342 5974998, los PDF y este sitio usan el 342 472 4998.
 4. Cargar las fotos.
-5. Logo real de la ONG.
+5. Usar `logo-blanco.png` en el footer, que hoy no tiene logo.
 6. Subdominio propio para el portal de alumnos (`alumnos.sumarsalud.org`).
 7. Fecha y horario exactos del examen de ingreso, cuando se definan.
 
 ## Publicar
 
-Está en Vercel. La idea es conectar el repo de GitHub para que cada push publique solo.
-Es un sitio estático: sin framework, sin comando de build, directorio raíz.
+Está en Vercel, conectado a `github.com/Luk4ConK/escuela-guardavidas`: cada push a `main`
+publica solo. Es un sitio estático: sin framework, sin comando de build, directorio raíz.
+
+URL: https://escuelaguardavidas.vercel.app
+
+**No lo publiques arrastrando la carpeta a Vercel.** Eso crea un deploy sin relación con el
+repo, y después "Redeploy" repite esos archivos viejos en vez de traer lo último de GitHub.
+Ya pasó una vez: el sitio quedó publicando una versión anterior, con la barra superior
+en una sola fila desbordando 307 px fuera de la pantalla.

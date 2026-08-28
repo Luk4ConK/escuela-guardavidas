@@ -1,3 +1,22 @@
+LOGOS
+=====
+
+Ya están cargados. Son PNG con fondo transparente, de 256x256.
+Los originales vinieron en 1024x1024 y se redujeron: a 52 px de pantalla,
+el tamaño grande solo hacía pesar la página.
+
+  logo.png         EN USO. El de la formación, a color, con la palabra
+                   GUARDAVIDAS abajo. Va en la barra superior.
+
+  logo-blanco.png  Versión negativa, para fondos oscuros. Todavía sin usar.
+                   Ojo: esta variante NO trae la palabra GUARDAVIDAS.
+
+  logo-ong.png     El de la ONG (la vara de Esculapio, sin el guardavidas).
+                   Todavía sin usar.
+
+Si reemplazás alguno, mantené el nombre y el fondo transparente.
+
+
 FOTOS DEL SITIO
 ===============
 
