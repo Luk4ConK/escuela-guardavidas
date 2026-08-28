@@ -14,6 +14,13 @@ el tamaño grande solo hacía pesar la página.
   logo-ong.png     El de la ONG (la vara de Esculapio, sin el guardavidas).
                    Todavía sin usar.
 
+  favicon-32.png   EN USO. El iconito de la pestaña del navegador.
+  favicon-180.png  EN USO. Para cuando alguien guarda el sitio en la
+                   pantalla de inicio del celular.
+
+Los dos favicon salen del mismo logo a color, sin recortar. Si cambia el
+logo, hay que volver a generarlos en 32 y 180 px.
+
 Si reemplazás alguno, mantené el nombre y el fondo transparente.
 
 
